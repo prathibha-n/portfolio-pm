@@ -1,60 +1,35 @@
-# Hi, I'm Prathibha N 👋
+# Prathibha N — PM Portfolio
 
-**Product Manager** with 3 years building 0→1 products and scaling them. I work across **B2B SaaS** and **mobility marketplaces** — turning ambiguity into shipped features, and data into decisions.
+I'm a product manager who thinks in systems first.
 
-📍 Bengaluru, India | [Say Hi on LinkedIn](https://www.linkedin.com/in/nprathibha30) | [Portfolio](https://nprathibhawrk.wixsite.com/portfolio)
-
----
-
-## 📈 By the numbers
-
-| | | | |
-|---|---|---|---|
-| 3 yrs PM experience | 4x product scaled via PLG |20+ markets scored & evaluated | 50% driver engagement lift (A/B) |
-| 48 enterprises in 3 months | ~0 CAC on last PLG push |
+The way I work: understand the system, find where users actually get stuck (not where the PRD assumed they would), then figure out what number moves if I'm right. In that order. Almost always in that order.
 
 ---
 
-## 🚀 What I've shipped
+## What's here
 
-**🛵 My Route Booking — Rapido**
-Supply-side allocation feature letting captains select preferred routes. Ran A/B experiments in Delhi & Jaipur — 50% driver engagement lift, rolled out to 20+ cities.
-`Marketplaces` `A/B Testing` `Supply-side Optimization`
+Five projects (and possibly more with time!) across the problem spaces I care about — marketplace dynamics, AI for frontline workers, B2B SaaS expansion, and product and data work that answers actual product questions instead of just running.
 
-**🌏 greytHR PRO — International Expansion**
-Led 0→1 launch across India and Indonesia. Built a market scoring framework across 20 SEA/ME markets. 30+ customers in Q1 with Indonesia as anchor market.
-`GTM` `B2B SaaS` `Market Scoring Framework`
-
-**📊 Analytics Infrastructure — greytHR**
-Built event tracking and KPI dashboards from scratch in Mixpanel, GA, and Superset. Cut decision cycle time by 40%.
-`Analytics` `Data` `Dashboards`
-
-**⚡ ETL Redesign — Vumonic**
-Redesigned data pipelines, cutting client delivery timelines by 8 days. Shipped a beta email analytics platform in 4 weeks from wireframe to product.
-`Data Ops` `0→1` `Client UX`
+The Rapido case study is real work. The greytHR teardown is a real framework I built. The simulator and the PRD are how I'd approach problems I haven't owned yet — same standard, just no prod data to anonymise.
 
 ---
 
-## 🛠 Personal Projects
+## Why these problems
 
-| Project | Description |
-|---|---|
-| [🗺 WanderPlan](https://nprathibhawrk.wixsite.com/portfolio/wanderplan) | AI travel itinerary planner with real-time recommendations |
-| [🍳 PantryPulse](https://nprathibhawrk.wixsite.com/portfolio/pantrypulse-1) | Voice-first cooking & inventory app with expiration tracking |
-| [🧠 Sophia](https://nprathibhawrk.wixsite.com/portfolio/sophia) | Conversational AI philosophy platform for non-academics |
+India's product constraints are genuinely interesting. A driver checking their phone on a bike in Bengaluru traffic isn't an edge case — it's the user. Networks drop. Literacy varies. Margins are thin. I find "build for the messy middle" more interesting than "build for the ideal user on a good day."
 
 ---
 
-## 🧰 Skills
+## How to navigate
 
-**Strategy & Execution:** 0→1 launches · PLG · Roadmapping · RICE · GTM planning · Agile
+Each folder has its own README. Start wherever is relevant to you.
 
-**Analytics & Data:** SQL (BigQuery, Metabase) · Mixpanel · Amplitude · Tableau · Superset · Cohort analysis
-
-**Research & Experimentation:** User interviews · A/B testing · Funnel analysis · PRD writing
-
-**AI & Tooling:** Google AI Studio · Prompt engineering · Figma · Visily · Stitch · Claude · n8n
+- Marketplace thinking → `rapido-case-study`
+- AI product spec → `prd-voice-ai-captain`  
+- SQL as a PM tool → `sql-marketplace-analytics`
+- Market expansion + B2B → `greythr-expansion-teardown`
+- Supply-demand modelling → `marketplace-simulator`
 
 ---
 
-> *"I'm often brought into under-defined products and messy problem spaces to find the real story, ask the hard questions, and create momentum."*
+[LinkedIn](https://linkedin.com/in/nprathibha) · nprathibha.wrk@gmail.com · [Portfolio](https://your-portfolio-link)
