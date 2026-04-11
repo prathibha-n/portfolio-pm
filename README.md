@@ -32,4 +32,4 @@ Each folder has its own README. Start wherever is relevant to you.
 
 ---
 
-[LinkedIn](https://linkedin.com/in/nprathibha) · nprathibha.wrk@gmail.com · [Portfolio](https://your-portfolio-link)
+[LinkedIn](https://linkedin.com/in/nprathibha) 
