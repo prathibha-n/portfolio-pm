@@ -3,7 +3,7 @@
 > **Role:** Product Manager, Supply & Marketplace  
 > **Feature:** My Route Booking (preferred destination for drivers)  
 > **Experiment:** A/B test across Delhi and Jaipur  
-> **Core result:** Drivers who set a destination got pinged 2× more and accepted rides 90% of the time (up from ~80%)
+> **Core result:** Drivers who set a destination through My Route Booking got pinged 2× more and accepted rides 90% of the time (up from ~80%)
 
 ---
 
