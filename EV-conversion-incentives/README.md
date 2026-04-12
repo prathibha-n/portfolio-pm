@@ -23,7 +23,6 @@ This repo provides the analytical and product foundation to address all three �
 |---|---|
 | `ev_driver_cohort.sql` | Segments active non-EV drivers into conversion tiers using behavioural proxies |
 | `ev_cohort_sample_output.csv` | Sample output from the cohort query (7 rows × 9 columns) |
-| `cancellation_risk_model.md` | Design rationale for the risk signal and threshold sensitivity analysis |
 | `ev_transition_prd.md` | Full PRD — incentive tiers, charging finder spec, UX escalation ladder, launch sequencing |
 
 ---
