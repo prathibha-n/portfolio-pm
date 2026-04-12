@@ -1,7 +1,7 @@
 # EV Transition — Driver Cohort Analysis & Incentive Design
 > Ridehailing EV transition strategy for Indian mobility platforms · Bengaluru-first
 
-A product strategy toolkit for converting active petrol/diesel/CNG drivers to EVs on ridehailing platforms (Uber India, Rapido, Ola, Porter). Combines a SQL-based driver targeting model with a full product spec for the incentive system and in-app charging finder.
+A product strategy toolkit for converting active petrol/diesel/CNG drivers to EVs on ridehailing platforms (Uber India, Rapido, Ola, Porter). Combines a SQL-based driver targeting model with a full product spec for the incentive system.
 
 ---
 
@@ -62,46 +62,3 @@ The cohort output is the direct input to the incentive budget model — each fla
 - **Launch sequencing** — four phases with success gates, starting with a finder-only soft launch to the highest-anxiety cohort before any cash is spent
 
 ---
-
-## Launch logic
-
-```
-ev_driver_cohort.sql
-        │
-        ├── natural_ev_profile      ──► Phase 0: charging finder soft launch (~951 drivers, BLR)
-        ├── tier_1 cohort           ──► Phase 1: incentive A/B pilot (~1,840 drivers, BLR)
-        ├── tier_1 + tier_2         ──► Phase 2: city expansion (BLR + DEL + MUM)
-        └── all tiers, all cities   ──► Phase 3: full rollout
-```
-
-**Phase 0 is the critical gate.** The charging finder is launched to the high-anxiety cohort before any subsidy spend. If finder engagement alone reduces battery cancel rate by ≥20%, the binding constraint for that sub-segment is information — not capital — and the budget can be reallocated accordingly.
-
----
-
-## Running the SQL
-
-```sql
--- Tested on BigQuery and Postgres (see dialect notes below)
-\i ev_driver_cohort.sql
-```
-
-Adjust tier thresholds at the top of the file to match your driver distribution. See `cancellation_risk_model.md` for sensitivity analysis — loosening `avg_daily_trips` from 8 to 6, for example, expands the Tier 1 pool by ~55% but increases adverse selection risk.
-
-### Dialect notes
-
-`COUNTIF()` and `DATEDIFF()` are BigQuery idioms. Postgres equivalents:
-
-```sql
--- BigQuery                              -- Postgres
-COUNTIF(condition)                       COUNT(CASE WHEN condition THEN 1 END)
-DATEDIFF(date1, date2)                   DATE_PART('day', date1 - date2)
-```
-
----
-
-## Related
-
-| | |
-|---|---|
-| `ev_hub_placement.ipynb` | Charging hub placement model — demand heatmap × dwell-time scoring with time-of-day segmentation |
-| Deliverable 4 | Growth experiment plan — EV adoption funnel, A/B test design, sample size calculation |
