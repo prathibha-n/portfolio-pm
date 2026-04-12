@@ -18,10 +18,10 @@ The product is intentionally generic — no platform, company, or AI system is n
 
 ## Files
 
-| File | What it is |
-|---|---|
-| `PRD.md` | Full product requirements document (~500 lines) |
-| `user-journey.drawio.png` | User journey map image — created in draw.io |
+| File | What it is | Link |
+|---|---|---|
+| `PRD.md` | Full product requirements document (~500 lines) | [Link to PRD](https://github.com/prathibha-n/portfolio-pm/blob/main/prd-voice-ai-captain/PRD.md) |
+| `user-journey.drawio.png` | User journey map image — created in draw.io | [Link to User Journey Map](https://github.com/prathibha-n/portfolio-pm/blob/main/prd-voice-ai-captain/Driver-VoiceAI-user-journey.drawio.png) |
 
 ---
 
