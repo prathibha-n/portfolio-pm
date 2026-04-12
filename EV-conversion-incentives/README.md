@@ -32,7 +32,7 @@ This repo provides the analytical and product foundation to address all three â€
 
 ### Step 1 â€” Identify the right drivers
 
-`ev_driver_cohort.sql` runs against a 90-day rolling window of trip and driver data. Rather than targeting by vehicle age alone, it scores drivers on behavioural proxies that signal a natural EV use case:
+`ev-driver-cohort.sql` runs against a 90-day rolling window of trip and driver data. Rather than targeting by vehicle age alone, it scores drivers on behavioural proxies that signal a natural EV use case:
 
 | Signal | Why it matters |
 |---|---|
