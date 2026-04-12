@@ -1,7 +1,7 @@
 # PRD: AI Voice Assistant for Delivery Drivers
-**Product:** Voice AI for Last-Mile Delivery Drivers
-**Last Updated:** April 2026
-**Stakeholders:** Last-Mile Ops, Driver Experience, Data Science, City Ops, Safety & Compliance
+**Product:** Voice AI for Last-Mile Delivery Drivers  
+**Last Updated:** April 2026  
+**Stakeholders:** Last-Mile Ops, Driver Experience, Data Science, City Ops, Safety & Compliance  
 
 ---
 
