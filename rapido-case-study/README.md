@@ -23,7 +23,7 @@ I spent time talking to drivers in Delhi and Jaipur — not through a formal res
 
 Drivers weren't passive supply waiting for any ping. They had a destination in mind.
 
-A driver finishing a shift in South Delhi didn't want a ride to Gurgaon. A driver starting his day in Jaipur's old city wanted to work his way toward the newer commercial zones, not take a ride that pulled him deeper into the old city's narrow lanes. An afternoon driver killing time near a transit hub wanted rides that moved him toward his family's neighborhood before school pickup.
+A driver finishing a shift in South Delhi didn't want a ride to Gurgaon. A driver starting his day in Jaipur's old city wanted to work his way toward the newer commercial zones, not take a ride that pulled him deeper into the old city's narrow lanes. An afternoon driver killing time near a transit hub wanted rides that moved him toward his family's neighborhood before lunch.
 
 When a ping came in that conflicted with where they wanted to go, they'd either reject it or — more often — just sit and wait for one that fit. That selective waiting *was* the idle time problem.
 
@@ -103,7 +103,7 @@ The engineering footprint was minimal. But changing who gets surfaced for which 
 The problem showed up as "high idle time" at the city level. Nothing in the dashboard pointed to preferred-route behavior as a cause — that only came from talking to drivers. Quantitative data told us *where* the problem was. Qualitative research told us *why*.
 
 **4. The simplest hypothesis is often the right one.**  
-My first instinct was to model a more complex allocation rewrite — state signals, heading vectors, recent behavior weighting. The actual fix was: ask drivers where they want to go and offer them relevant rides. Sometimes the product problem is that you haven't asked the user a basic question.
+My first instinct was to seek a more complex allocation model. The actual fix was: ask drivers where they want to go and offer them relevant rides. Sometimes the product problem is that you haven't asked the user a basic question.
 
 ---
 
