@@ -22,7 +22,7 @@ This repo provides the analytical and product foundation to address all three �
 | File | Description |
 |---|---|
 | `ev_driver_cohort.sql` | Segments active non-EV drivers into conversion tiers using behavioural proxies |
-| `ev_cohort_sample_output.csv` | Sample output from the cohort query (7 rows × 9 columns) |
+| `ev_cohort_sample_output.csv` | Sample output from the cohort query (15 rows × 8 columns) |
 | `ev_transition_prd.md` | Full PRD — incentive tiers, charging finder spec, UX escalation ladder, launch sequencing |
 
 ---
