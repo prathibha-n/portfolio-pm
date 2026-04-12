@@ -166,7 +166,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 > Constructed from ride-along field research `[OBS]` and interview data `[INT]`. Names are illustrative archetypes.
 
-### Persona 1: "The New Arrival" — New Driver (tenure < 60 days)
+### Persona 1: New Driver (tenure < 60 days)
 
 **Profile:** Early 20s, migrant worker, major metro, primary language different from the city's dominant language, uses earphones while riding, entry-to-mid Android device
 **Mental model:** Anxious about wrong addresses, afraid to call support (feels judged), low app fluency
@@ -179,7 +179,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 2: "The Optimizer" — Veteran Driver (tenure > 1 year, 12+ orders/day)
+### Persona 2: Veteran Driver (tenure > 1 year, 12+ orders/day)
 
 **Profile:** Mid-30s, city native, multilingual, efficiency-oriented, Bluetooth headset, sometimes manages a second driver in the household
 **Mental model:** Efficiency-obsessed; resents any redundant app step as a tax on earnings
@@ -192,7 +192,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 3: "The Fleet Rider" — EV Driver (electric two-wheeler, fleet or rental)
+### Persona 3: EV Driver (electric two-wheeler, fleet or rental)
 
 **Profile:** Late 20s, 15–18 orders/day, platform-partnered EV, more tech-comfortable, in-dash display + earbuds
 **Mental model:** Managing range anxiety and delivery pressure simultaneously; frustrated by absence of EV-specific app features
@@ -205,7 +205,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 4: "The Elder" — Senior Driver / Informal Mentor (tenure 3+ years)
+### Persona 4: Senior Driver / Informal Mentor (tenure 3+ years)
 
 **Profile:** Early 40s, 3+ years on platform, informally mentors new drivers in the zone, Bluetooth helmet, pride in professionalism
 **Pain points:**
@@ -251,7 +251,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 5.1 Activation
 
-**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech)
+**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech) similar to **"Hey siri, OK Google, Alexa"**
 **Fallback activation:** Hardware shortcut (e.g. volume down × 2 while app is active) for high-noise environments
 **Always-on mode:** Optional; default OFF; auto-enables when an order is active and driver is in-motion (accelerometer + GPS velocity signal)
 **Language support (v1):** Minimum 2 languages covering primary and most common secondary driver languages. Code-switching (mixing two languages mid-sentence) must be handled — drivers do not stop code-switching on command.
@@ -307,7 +307,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 1. **Brevity first.** Responses cap at 2 sentences. Addresses not read unsolicited — only on request or at specific lifecycle moments.
 2. **Confirmation loops only for irreversible actions.** Cancel and End shift require spoken "yes, confirm" before executing. All other commands execute immediately.
-3. **Graceful error recovery.** If unrecognised: "Didn't catch that, please say it again." Never silent failure.
+3. **Graceful error recovery.** If unrecognised: "Didn't catch that, please say it again." No silent failure.
 4. **Proactive narration at key moments.** System speaks unprompted when: order is ready at merchant, driver is within 200m of drop, an incentive milestone is 1–2 orders away, or EV battery falls below 20% during an active delivery.
 5. **Transparent handoffs.** Before connecting to a human agent: "Connecting you to support now, one moment." Driver is never dropped into hold without warning.
 
@@ -387,7 +387,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 - [ ] **Field research:** 40 ride-alongs across target city, all driver archetypes, 3 zone types. Focus on screen interaction moments. `[OBS]`
 - [ ] **Utterance corpus:** Collect 2,000 labelled voice samples in 2 target languages — natural delivery-context phrases, not prompted reads. Used for ASR fine-tuning and intent model training.
 - [ ] **Baseline instrumentation:** Log taps per order stage, time-between-taps, support call triggers, time-to-complete by order state. This is the measurement foundation — do not launch without it. `[LOG]`
-- [ ] **Wizard-of-Oz prototype:** Recruit 20 drivers; simulate voice responses via a human operator. Test whether drivers will engage with voice at all before the model is built. `[OBS]`
+- [ ] **Man-behind-the-curtain prototype:** Recruit 20 drivers; simulate voice responses via a human operator. Test whether drivers will engage with voice at all before the model is built. `[OBS]`
 - [ ] **Safety & legal audit:** Policy and legal sign-off on scope, data retention, and voice recording compliance per target market.
 
 ### Phase 1: Dark Store Pilot (Weeks 5–10)
@@ -459,7 +459,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 | Ride-along field observation | 40 drivers, 3 zone types | Phase 0 | PM + UX Researcher |
 | Semi-structured interviews | 60 drivers (20 per tenure tier) | Phase 0 + Phase 1 debrief | UX Researcher |
 | Utterance corpus collection | 2,000 labelled samples, 2 languages | Phase 0 | ML team + PM |
-| Wizard-of-Oz prototype | 20 drivers | Phase 0 weeks 3–4 | PM + Engineering |
+| Man-behind-the-curtain prototype | 20 drivers | Phase 0 weeks 3–4 | PM + Engineering |
 | In-app tap event logging | All drivers in pilot | Phase 1 onward | Engineering |
 | In-app satisfaction rating | Pilot cohort | Phase 1 onward | PM |
 
@@ -495,5 +495,5 @@ The 1.5–2× figure is a structural estimate that should be replaced with your 
 | ASR | Automatic Speech Recognition |
 | TTS | Text-to-Speech |
 | MOS | Mean Opinion Score — standard TTS naturalness metric (1–5 scale) |
-| Wizard-of-Oz | Research method where a human simulates AI responses to test user behaviour before the AI is built |
+| Man-behind-the-curtain | Research method where a human simulates AI responses to test user behaviour before the AI is built |
 | Code-switching | Moving between two languages mid-sentence; common in multilingual urban markets |
