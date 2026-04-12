@@ -63,11 +63,11 @@ The A/B test runs in weeks 6–8. Expansion to Koramangala, Whitefield, and Indi
 
 ## Files
 
-| File | What it answers |
-|---|---|
-| `01_sql_schema_queries.sql` | How do we structure and query the underlying store data? |
-| `02_demand_forecast.ipynb` | How bad is the waste? What will demand look like next week? |
-| `02_7day_forecast.csv` | The forecast output, ready for the dashboard or WMS to consume |
+| File | What it answers |Link|
+|---|---|---|
+| `01_sql_schema_queries.sql` | How do we structure and query the underlying store data? |[Link](https://github.com/prathibha-n/portfolio-pm/blob/main/darkstore-optimisation/01_sql_schema_queries.sql)
+| `02_demand_forecast.ipynb` | How bad is the waste? What will demand look like next week? | [Link](https://github.com/prathibha-n/portfolio-pm/blob/main/darkstore-optimisation/02_demand_forecast_1.ipynb)
+| `02_7day_forecast.csv` | The forecast output, ready for the dashboard or WMS to consume | [Link](https://github.com/prathibha-n/portfolio-pm/blob/main/darkstore-optimisation/02_7day_forecast.csv)
 | `02_demand_forecast_charts.png` | Visual proof of model accuracy and demand patterns |
-| `03_PRD.md` | What are we building, why, and how do we know it worked? |
-| `04_AB_test_design.md` | How do we prove the ML restocking trigger is better than manual? |
+| `03_PRD.md` | What are we building, why, and how do we know it worked? | [Link](https://github.com/prathibha-n/portfolio-pm/blob/main/darkstore-optimisation/03_PRD.md)
+| `04_AB_test_design.md` | How do we prove the ML restocking trigger is better than manual? |[Link](https://github.com/prathibha-n/portfolio-pm/blob/main/darkstore-optimisation/04_AB_test_design.md)
