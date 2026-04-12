@@ -24,11 +24,7 @@ India's product constraints are genuinely interesting. A driver checking their p
 
 Each folder has its own README. Start wherever is relevant to you.
 
-- Marketplace thinking → `rapido-case-study`
-- AI product spec → `prd-voice-ai-captain`  
-- SQL as a PM tool → `sql-marketplace-analytics`
-- Market expansion + B2B → `greythr-expansion-teardown`
-- Supply-demand modelling → `marketplace-simulator`
+
 
 ---
 
