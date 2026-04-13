@@ -8,9 +8,7 @@ The way I work: understand the system, find where users actually get stuck (not 
 
 ## What's here
 
-Five projects (and possibly more with time!) across the problem spaces I care about — marketplace dynamics, AI for frontline workers, B2B SaaS expansion, and product and data work that answers actual product questions instead of just running.
-
-The Rapido case study is real work. The greytHR teardown is a real framework I built. The simulator and the PRD are how I'd approach problems I haven't owned yet — same standard, just no prod data to anonymise.
+Several projects across the problem spaces I care about — marketplace dynamics, AI for frontline workers, B2B SaaS expansion, and product and data work that answers actual product questions instead of just running.
 
 ---
 
