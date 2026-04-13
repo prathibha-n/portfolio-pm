@@ -6,21 +6,18 @@ A PM-led analysis of customer retention in a beauty ecommerce vertical — looki
 
 ## Context
 
-Retention analysis is a core PM skill — but most of it in practice gets reduced to "send a push notification on Day 7." This project is an attempt to go deeper: build the cohort model from scratch, interrogate the data properly, and derive strategies that are specific enough to actually act on.
-
----
+Most cohort analysis in practice gets reduced to "send a push notification on Day 7." This project is an attempt to go deeper: build the cohort model from scratch, interrogate the data properly, and derive strategies that are specific enough to actually act on.---
 
 ## What I Did
 
-- Designed a simulated beauty ecommerce dataset — 5,000 customers, 6 signup cohorts (Sep 2024 – Feb 2025), across 5 product categories (Health & Beauty, Makeup, Haircare, Personal Care, Fragrance) and 5 acquisition channels (Google Search, Instagram / Meta Paid, Influencer & Creator, App Organic, Referral Program)
+- Designed a simulated beauty ecommerce dataset — 5,000 customers, 6 signup cohorts (Sep 2024 – Feb 2025), across 5 product categories (Health & Beauty, Makeup, Haircare, Personal Care, Fragrance) and 5 acquisition channels (Google Search, Instagram / Meta Paid, Influencer & Creator, App Organic, Referral Program)  
+The dataset is synthetic but calibrated to realistic beauty ecommerce behaviour. The schema mirrors the public [Olist ecommerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 - Built a SQL cohort model using CTEs to compute D7 / D30 / D90 retention rates broken down by signup month, acquisition channel, and first-order category
 - Identified the two highest-signal drop-off segments and formed hypotheses for each — one driven by purchase intent at acquisition, one by product replenishment cycle
 - Derived a category-level retention strategy — each category has a different replenishment behaviour and needs a different re-engagement mechanic
 - Built a channel strategy — ranking channels by retention quality and examining where each channel is being used well vs where it is misallocated
 - Designed a lifecycle segmentation framework — New / Returning / Veteran users with distinct goals and success metrics per stage
 - Framed an experiment roadmap with specific hypotheses to test, including how to measure incremental impact correctly using a control group
-
-The dataset is synthetic but calibrated to realistic beauty ecommerce behaviour. The schema mirrors the public [Olist ecommerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and can be swapped for real data.
 
 ---
 
