@@ -27,7 +27,7 @@ The dataset is synthetic but calibrated to realistic beauty ecommerce behaviour.
 
 | File | What it is |
 |---|---|
-| `beauty_retention_insights.md` | The main deliverable — findings, category strategy, channel strategy, lifecycle segmentation, and experiment design |
+| `beauty_retention_insights.md` | The main document — findings, category strategy, channel strategy, lifecycle segmentation, and experiment design |
 | `chart1_cohort_heatmap.png` | Overall retention by cohort month |
 | `chart2_channel_retention.png` | D7 / D30 / D90 retention by acquisition channel |
 | `chart3_category_retention.png` | D7 / D30 / D90 retention by first-order category |
