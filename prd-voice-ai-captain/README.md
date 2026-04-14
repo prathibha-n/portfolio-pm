@@ -10,7 +10,7 @@ A PM case study built to demonstrate three skills in combination:
 
 - **AI product ownership** — scoping a voice AI system from ASR architecture to dialogue design to offline fallback
 - **Frontline worker empathy** — personas and user stories grounded in ride-along observation, not assumptions
-- **Rigorous research practice** — every quantitative claim is tagged by source type and the measurement method is shown
+- **Rigorous research practice** — every quantitative claim is tagged by source type, with the basis and validation method described inline
 
 The product is intentionally generic — no platform, company, or AI system is named. It is designed to port across any last-mile delivery ecosystem (quick commerce, logistics, ride-hailing, gig delivery).
 
@@ -30,9 +30,9 @@ The product is intentionally generic — no platform, company, or AI system is n
 The PRD covers:
 
 1. **Problem statement** — the interface-context mismatch for drivers operating one-handed under load
-2. **Evidence base** — 7 quantitative signals, each with source tag and measurement method
+2. **Evidence base** — 7 quantitative signals, each with source tag, basis, and validation method
 3. **Goals and non-goals** — v1 scope with explicit deferral rationale for v2/v3
-4. **User personas** — four archetypes (new driver, veteran, EV fleet rider, senior mentor) built from field research
+4. **User personas** — four archetypes (new driver, veteran, EV fleet rider, senior mentor)
 5. **User stories** — 12 stories across order lifecycle, issue reporting, and shift management
 6. **Feature specification** — activation model, command taxonomy (4 categories, ~20 intents), dialogue design principles, high-level AI architecture
 7. **Success metrics** — north star (task completion rate), primary metrics, secondary metrics, and guardrail metrics
@@ -44,35 +44,35 @@ The PRD covers:
 
 ## Data sourcing methodology
 
-Every number in the PRD carries one of six source tags:
+Every number in the PRD carries one of seven source tags:
 
 | Tag | Meaning |
 |---|---|
+| `[HYPO]` | Hypothesis — not yet observed; basis and validation method described inline |
 | `[OBS]` | Direct observational research — ride-alongs, screen recordings |
 | `[INT]` | Driver interviews or focus groups |
 | `[LOG]` | Platform analytics / server-side log data |
 | `[LIT]` | Published third-party research, cited inline |
 | `[IND]` | Industry benchmark from public report, cited inline |
-| `[EST]` | Structured estimate — method shown inline |
+| `[EST]` | Structured estimate — basis and method shown inline |
 
-Where a claim is an estimate, the estimation method is written out. Where a claim relies on an industry benchmark, the source is named and a method for replacing it with platform-specific data is given. This is intentional — a PRD that can't be challenged is a PRD that hasn't been thought through.
+No primary research has been conducted for this document. Figures marked `[HYPO]` are reasoned starting points with a described validation method. Figures marked `[EST]` are structured estimates where no published benchmark was found — the reasoning is shown and a method for replacing the figure with real platform data is given. Where `[LIT]` or `[IND]` is used, a link to the source is included. The intent throughout is to distinguish clearly between what is known, what is estimated, and what needs to be measured — a PRD that cannot be challenged has not been thought through.
 
 ---
 
 ## Journey map
 
-The journey map (`user-journey.drawio.png`) covers the full order lifecycle across six stages:
+The journey map covers the full order lifecycle across six stages:
 
 **Order assigned → Ride to merchant → At merchant → Ride to drop → At drop point → Complete order**
 
 For each stage it shows:
 
-- The current tap-heavy flow with tap counts `[OBS]`
-- The pain point at that stage `[INT]` + `[OBS]`
+- The current tap-heavy flow with tap counts
+- The pain point at that stage
 - The voice command that replaces the tap interaction
 - The proactive (system-initiated) narration that fires without any command
 - Persona-level impact across four driver archetypes
-
 
 ---
 
