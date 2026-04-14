@@ -79,7 +79,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 1.2 What the Evidence Shows
 
-> **Honesty note:** No primary research has been conducted for this document. The figures below are working hypotheses — either structured estimates based on how these systems typically work, or industry benchmarks from published sources. Each entry states its basis clearly and describes exactly how to replace the hypothesis with a real number before this PRD is used to commit resources.
+> **Honesty note:** No primary research has been conducted for this document. The figures below are working hypotheses — either structured estimates based on how these systems typically work, or industry benchmarks from published sources. Each entry states its basis clearly and describes exactly how to replace the hypothesis with a real number.
 
 ---
 
@@ -93,7 +93,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **% orders involving at least one inbound driver support call: guesstimate ~10–15%** `[EST]`
 
-*Basis:* This is a guesstimate derived from logical assumptions, not observed or published data. The reasoning: a delivery order has three structurally failure-prone handoff points — merchant readiness, address resolution, and customer contact at drop. If each has a ~4–6% independent failure rate (a conservative assumption for an urban, time-pressured context), the cumulative probability of at least one requiring a support call lands in the 10–15% range. The driver-initiated share is assumed to be roughly half of total platform support volume, consistent with the general pattern that customers and drivers generate roughly equal contact load on delivery platforms. Treat this range as a starting hypothesis only.
+*Basis:* This is a guesstimate derived from logical assumptions, not observed or published data. The reasoning: a delivery order has three structurally failure-prone handoff points — merchant readiness, address resolution, and customer contact at drop. If each has a ~4–6% independent failure rate (a conservative assumption for an urban, time-pressured context), the cumulative probability of at least one requiring a support call lands in the 10–15% range. The driver-initiated share is assumed to be roughly half of total platform support volume, consistent with the general pattern that customers and drivers generate roughly equal contact load on delivery platforms.
 
 *How to validate:* Pull CRM data for inbound support contacts. Tag by initiator (driver vs. customer) and by order state at time of contact (active delivery, pre-pickup, post-delivery). Formula: driver-initiated contacts during active delivery ÷ total orders in the same window. Any platform with a CRM and dispatch system can produce this in a single query. Methodology reference: [digitalgenius.com/blog/contact-to-order-ratio](https://www.digitalgenius.com/blog/contact-to-order-ratio).
 
@@ -101,7 +101,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **Top support call reasons: navigation confusion, OTP/handoff issues, order not ready at merchant** `[HYPO]`
 
-*Basis:* Reasoned hypothesis from first principles. These three categories represent the most structurally likely failure points in a delivery flow: (1) address resolution fails at the navigation step; (2) OTP handoff is a synchronisation problem between two parties under time pressure; (3) merchant readiness is outside the driver's control. This has not been validated through interviews on any platform.
+*Basis:* Reasoned hypothesis from first principles. These three categories represent the most structurally likely failure points in a delivery flow: (1) address resolution fails at the navigation step; (2) OTP handoff is a synchronisation problem between two parties under time pressure; (3) merchant readiness is outside the driver's control.
 
 *How to validate:* Two approaches, ideally run in parallel. First, pull existing support ticket data and apply a category taxonomy — most CRM systems allow tagging by contact reason; if not, sample 200 tickets and manually code them. Second, run 15–20 critical incident interviews with drivers using the prompt: *"Tell me about the last time you had to call support during a delivery. Walk me through what happened."* Open-code responses. Cross-check the two datasets. Expect the ticket data and interview data to diverge — the interview data will surface reasons drivers don't call support even when they should.
 
@@ -109,7 +109,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **Average support handle time: ~4 minutes** `[EST]`
 
-*Basis:* Could not find sources to Literature. The 3–5 minute handle time range is consistent with general customer service benchmarks for app-based platforms, but should be treated as an unverified estimate until replaced with your own CRM data. McKinsey publishes broadly on gig operations at [mckinsey.com/featured-insights/future-of-work](https://www.mckinsey.com/featured-insights/future-of-work) but does not publish a specific handle time benchmark for gig delivery driver support. Handle time is highly variable by contact reason — a navigation query resolved by an agent reading an address aloud takes ~2 minutes; an order dispute requiring evidence review takes 8+ minutes.
+*Basis:* Could not find sources to Literature. The 3–5 minute handle time range is consistent with general customer service benchmarks for app-based platforms. McKinsey publishes broadly on gig operations at [mckinsey.com/featured-insights/future-of-work](https://www.mckinsey.com/featured-insights/future-of-work) but does not publish a specific handle time benchmark for gig delivery driver support. Handle time is highly variable by contact reason — a navigation query resolved by an agent reading an address aloud takes ~2 minutes; an order dispute requiring evidence review takes 8+ minutes.
 
 *How to validate:* Pull average handle time from the CRM, filtered to driver-initiated contacts during active deliveries. Segment by contact reason category once that taxonomy is established (see above). The aggregate figure is less useful than the per-reason breakdown for sizing the opportunity.
 
@@ -117,7 +117,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **Driver NPS: estimated 28–35 for delivery platforms in growth markets** `[EST]`
 
-*Basis:* Could not find sources to Literature. The 28–35 NPS range for gig delivery worker satisfaction in growth markets is plausible based on general gig worker sentiment research, but should be treated as an unverified planning assumption. Bain's NPS research hub ([bain.com/insights/topics/loyalty](https://www.bain.com/insights/topics/loyalty/)) and BCG's gig economy work ([bcg.com/capabilities/people-strategy/future-of-work](https://www.bcg.com/capabilities/people-strategy/future-of-work)) are the closest relevant bodies of research, but neither publishes a specific NPS benchmark for gig delivery drivers in growth markets. Replace with your platform's own driver NPS pulse survey `[INT]` before using this figure in any business case.
+*Basis:* Could not find sources to Literature. The 28–35 NPS range for gig delivery worker satisfaction in growth markets is plausible based on general gig worker sentiment research, but should be treated as an unverified planning assumption. Bain's NPS research hub ([bain.com/insights/topics/loyalty](https://www.bain.com/insights/topics/loyalty/)) and BCG's gig economy work ([bcg.com/capabilities/people-strategy/future-of-work](https://www.bcg.com/capabilities/people-strategy/future-of-work)) are the closest relevant bodies of research, but neither publishes a specific NPS benchmark for gig delivery drivers in growth markets. 
 
 *How to validate:* Run a driver NPS pulse survey. A single-question survey ("How likely are you to recommend driving for this platform to a friend or colleague?") deployed via in-app notification after shift completion, with a 10% random sample, will produce a statistically reliable NPS in 2–4 weeks depending on fleet size. Segment results by tenure tier and city to identify where dissatisfaction is concentrated.
 
@@ -125,7 +125,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **Near-miss incidents involving device interaction while in motion: ~20–25% directional estimate** `[LIT]`
 
-*Basis:* Two published bodies of research are directionally relevant. MoRTH (India) publishes annual road accident data at [data.gov.in](https://data.gov.in) and the Road Accidents in India report series at [morth.nic.in](https://morth.nic.in) — this data consistently shows two-wheelers as the highest-risk vehicle category in urban India, with handheld device distraction as a contributing factor, though a specific causation percentage is not published in a standalone findable document. Monash University Accident Research Centre (MUARC) publishes delivery rider safety research at [monash.edu/muarc](https://www.monash.edu/muarc) — peer-reviewed research on platform delivery rider safety (e.g., Wang & Churchill, *Journal of Sociology,* 2025, [doi.org/10.1177/14407833241246571](https://journals.sagepub.com/doi/10.1177/14407833241246571)) confirms that phone interaction during riding is a documented safety risk. The ~20–25% estimate is a planning assumption derived from the directional weight of this research, not a citable measured figure.
+*Basis:* Two published bodies of research are directionally relevant. MoRTH (India) publishes annual road accident data at [data.gov.in](https://data.gov.in) and the Road Accidents in India report series at [morth.nic.in](https://morth.nic.in) — this data consistently shows two-wheelers as the highest-risk vehicle category in urban India, with handheld device distraction as a contributing factor, though a specific causation percentage is not published in a standalone findable document. Monash University Accident Research Centre (MUARC) publishes delivery rider safety research at [monash.edu/muarc](https://www.monash.edu/muarc) — peer-reviewed research on platform delivery rider safety (e.g., Wang & Churchill, *Journal of Sociology,* 2025, [doi.org/10.1177/14407833241246571](https://journals.sagepub.com/doi/10.1177/14407833241246571)) confirms that phone interaction during riding is a documented safety risk. The ~20–25% estimate is a planning assumption derived from the directional weight of this research.
 
 *How to validate:* Platform-level safety data is difficult to collect directly. Two proxies are feasible: (1) add a post-incident report question to the existing driver app incident reporting flow — "Were you interacting with your phone immediately before the incident?" — and track the response rate over 6 months; (2) instrument the app to flag sessions where a tap interaction occurs while GPS velocity exceeds a walking-speed threshold (e.g. >15 km/h), then correlate those sessions with subsequent incident reports.
 
@@ -133,7 +133,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 **Driver monthly churn: estimated 25–30%** `[EST]`
 
-*Basis:* Could not find sources to Literature. The 25–30% monthly churn range is corroborated directionally by: (1) public reports of Amazon DSP driver churn of ~50% in the first 90 days ([spoke.com/dispatch/blog/last-mile-delivery-challenges](https://spoke.com/dispatch/blog/last-mile-delivery-challenges)); (2) Scandit's delivery driver workforce survey finding 40% of experienced contractors leave within a year ([scandit.com/blog/key-to-last-mile-success](https://www.scandit.com/blog/key-to-last-mile-success/)). Kearney publishes last-mile logistics research at [kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods](https://www.kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods) but no specific churn benchmark has been found publicly. The 25–30% monthly figure is a planning assumption only. Replace with dispatch data from your own platform before using in a business case.
+*Basis:* Could not find sources to Literature. The 25–30% monthly churn range is corroborated directionally by: (1) public reports of Amazon DSP driver churn of ~50% in the first 90 days ([spoke.com/dispatch/blog/last-mile-delivery-challenges](https://spoke.com/dispatch/blog/last-mile-delivery-challenges)); (2) Scandit's delivery driver workforce survey finding 40% of experienced contractors leave within a year ([scandit.com/blog/key-to-last-mile-success](https://www.scandit.com/blog/key-to-last-mile-success/)). Kearney publishes last-mile logistics research at [kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods](https://www.kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods) but no specific churn benchmark has been found publicly. 
 
 *How to validate:* Churn is directly calculable from dispatch data. Formula: drivers who completed at least one order in month M but zero orders in month M+1 ÷ active drivers in month M. Run this for the past 12 months and segment by city age, driver tenure cohort, and weekly earnings bracket. The earnings bracket segmentation typically reveals the most actionable insight — high churn is usually concentrated in drivers earning below a threshold that makes the work economically viable.
 
@@ -496,10 +496,9 @@ The claim that replacing one churned driver costs ~1.5–2× monthly earnings is
 |---|---|
 | Recruiting (referral bonus or acquisition cost) | Industry range: typically 0.2–0.5× first-month earnings equivalent `[EST]` |
 | Onboarding (training, kit, documentation, background check) | Typically 0.3–0.5× first-month earnings equivalent `[EST]` |
-| Productivity ramp (new driver completes ~60–70% of experienced driver order volume in first 30 days) | `[HYPO]` — consistent with general onboarding ramp patterns in gig logistics; validate with your own dispatch data |
+| Productivity ramp (new driver completes ~60–70% of experienced driver order volume in first 30 days) | `[HYPO]` — consistent with general onboarding ramp patterns in gig logistics |
 | Management time (zone supervisor onboarding hours) | `[EST]` 3–4 hours per new driver at supervisor loaded cost |
 
-The 1.5–2× figure is a structural estimate only. Replace with your platform's own CAC and onboarding cost data before using in any business case.
 
 ### D. Glossary
 
