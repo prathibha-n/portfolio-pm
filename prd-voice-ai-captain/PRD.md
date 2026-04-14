@@ -265,15 +265,15 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 5.1 Activation
 
-**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech)
-**Fallback activation:** Hardware shortcut (e.g. volume down × 2 while app is active) for high-noise environments
-**Always-on mode:** Optional; default OFF; auto-enables when an order is active and driver is in-motion (accelerometer + GPS velocity signal)
-**Language support (v1):** Minimum 2 languages covering primary and most common secondary driver languages. Code-switching (mixing two languages mid-sentence) must be handled — drivers do not stop code-switching on command.
+**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech)  
+**Fallback activation:** Hardware shortcut (e.g. volume down × 2 while app is active) for high-noise environments  
+**Always-on mode:** Optional; default OFF; auto-enables when an order is active and driver is in-motion (accelerometer + GPS velocity signal)  
+**Language support (v1):** Minimum 2 languages covering primary and most common secondary driver languages. Code-switching (mixing two languages mid-sentence) must be handled — drivers do not stop code-switching on command.  
 
 **Key constraints:**
-- Must function at 70 dB+ ambient noise (urban traffic, rain)
-- Response latency: <1.2 seconds end-to-end (P90)
-- Offline fallback for core commands when connectivity falls below 2G threshold
+- Must function at 70 dB+ ambient noise (urban traffic, rain)  
+- Response latency: <1.2 seconds end-to-end (P90)   
+- Offline fallback for core commands when connectivity falls below 2G threshold  
 
 ---
 
