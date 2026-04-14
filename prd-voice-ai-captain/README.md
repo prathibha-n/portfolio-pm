@@ -5,14 +5,10 @@ This folder contains a product management work sample: a full PRD and supporting
 ---
 
 ## What this is
-
-A PM case study built to demonstrate three skills in combination:
-
-- **AI product ownership** — scoping a voice AI system from ASR architecture to dialogue design to offline fallback
-- **Frontline worker empathy** — personas and user stories grounded in ride-along observation, not assumptions
-- **Rigorous research practice** — every quantitative claim is tagged by source type, with the basis and validation method described inline
-
-The product is intentionally generic — no platform, company, or AI system is named. It is designed to port across any last-mile delivery ecosystem (quick commerce, logistics, ride-hailing, gig delivery).
+ 
+A speculative PRD for a voice AI assistant for last-mile delivery drivers on two-wheelers. The core problem: delivery driver apps were designed for someone sitting still. Drivers use them one-handed, in traffic, under time pressure, often in a second language. This explores what a voice-first interface for that context would look like — from the AI architecture to the driver dialogue to the launch plan.
+ 
+The product is intentionally generic — no platform, company, or AI system is named. It is written to apply across any last-mile delivery ecosystem (quick commerce, logistics, ride-hailing, gig delivery).
 
 ---
 
