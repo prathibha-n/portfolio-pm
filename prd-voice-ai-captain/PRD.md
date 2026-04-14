@@ -279,42 +279,47 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 5.2 Command Taxonomy
 
-#### Category A: Order Lifecycle (High frequency — must-have v1)
-
+## Category A: Order lifecycle (high frequency — v1)
+ 
 | Intent | Example phrasings to recognise | Action triggered |
 |---|---|---|
-| Confirm pickup | "picked it up", "got the order", "collected" | Marks order Picked Up |
-| Mark arrived at drop | "I'm here", "arrived", "reached" | Marks Arrived at Drop |
-| Confirm delivery | "delivered", "handed over", "done" | Marks Delivered; initiates OTP flow via voice |
-| Hear OTP | "what's the OTP?", "tell me the code" | Reads customer OTP aloud |
-| Repeat address | "what's the address?", "where am I going?" | Re-reads drop address + nearest landmark |
-
-#### Category B: Issue Reporting (Medium frequency — v1)
-
-| Intent | Action triggered |
-|---|---|
-| Merchant not ready | Logs merchant delay; auto-triggers SLA timer and support alert if wait exceeds threshold |
-| Customer not answering | Logs contact attempt; unlocks "safe drop" flow via voice |
-| Cancel order | Initiates cancellation flow with spoken confirmation before executing |
-| General help | Reads top 3 probable issues based on current order state |
-
-#### Category C: Earnings & Shift (Lower frequency — v1)
-
-| Intent | Action triggered |
-|---|---|
-| Check earnings | Reads shift earnings, bonuses, incentives achieved vs. target |
-| Go on break | Sets status to Break (pauses order assignment) |
-| Return from break | Sets status to Active |
-| End shift | Initiates shift-end flow with spoken earnings summary and confirmation |
-
-#### Category D: Navigation Assist (Maps deep-link — v1)
-
-| Intent | Action triggered |
-|---|---|
-| Start navigation | Launches navigation via configured maps deep-link |
-| Check distance | Reads remaining distance + ETA |
-| Check traffic | Reads current traffic condition on route |
-
+| Confirm pickup | "picked it up", "got the order", "collected", "I have it", "got it" | Marks order Picked Up |
+| Mark arrived at drop | "I'm here", "arrived", "reached", "I'm outside", "at the door" | Marks Arrived at Drop |
+| Confirm delivery | "delivered", "handed over", "done", "left it with them", "gave it to them" | Marks Delivered; initiates OTP flow via voice |
+| Hear OTP | "what's the OTP?", "tell me the code", "what's the password", "OTP batao" | Reads customer OTP aloud |
+| Repeat address | "what's the address?", "where am I going?", "tell me the address again", "address dobara batao" | Re-reads drop address + nearest landmark |
+ 
+---
+ 
+## Category B: Issue reporting (medium frequency — v1)
+ 
+| Intent | Example phrasings to recognise | Action triggered |
+|---|---|---|
+| Merchant not ready | "order's not ready", "they're still preparing", "restaurant hasn't packed it yet", "they said 10 more minutes" | Logs merchant delay; auto-triggers SLA timer and support alert if wait exceeds threshold |
+| Customer not answering | "no one's picking up", "customer's not responding", "can't reach them", "they're not answering the door" | Logs contact attempt; unlocks "safe drop" flow via voice |
+| Cancel order | "cancel this order", "I need to cancel", "drop this order", "I can't complete this" | Initiates cancellation flow with spoken confirmation before executing |
+| General help | "what do I do", "I'm stuck", "help", "something's wrong" | Reads top 3 probable issues based on current order state |
+ 
+---
+ 
+## Category C: Earnings & shift (lower frequency — v1)
+ 
+| Intent | Example phrasings to recognise | Action triggered |
+|---|---|---|
+| Check earnings | "how much have I made", "what's my total today", "show me my earnings", "aaj kitna kamaya" | Reads shift earnings, bonuses, incentives achieved vs. target |
+| Go on break | "taking a break", "going on break", "I need a few minutes", "break le raha hoon" | Sets status to Break; pauses order assignment |
+| Return from break | "I'm back", "ready to go", "back online", "wapas aa gaya" | Sets status to Active |
+| End shift | "done for the day", "ending my shift", "I'm logging off", "shift khatam" | Initiates shift-end flow with spoken earnings summary and confirmation |
+ 
+---
+ 
+## Category D: Navigation assist (maps deep-link — v1)
+ 
+| Intent | Example phrasings to recognise | Action triggered |
+|---|---|---|
+| Start navigation | "start navigation", "take me there", "navigate", "rasta batao" | Launches navigation via configured maps deep-link |
+| Check distance | "how far is it", "how much further", "kitna door hai" | Reads remaining distance + ETA |
+| Check traffic | "how's the traffic", "any delays", "traffic kaisa hai" | Reads current traffic condition on route |
 ---
 
 ### 5.3 Dialogue Design Principles
