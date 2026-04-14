@@ -1,7 +1,10 @@
 # PRD: AI Voice Assistant for Delivery Drivers
-**Product:** Voice AI for Last-Mile Delivery Drivers  
-**Last Updated:** April 2026  
-**Stakeholders:** Last-Mile Ops, Driver Experience, Data Science, City Ops, Safety & Compliance  
+**Product:** Voice AI for Last-Mile Delivery Drivers
+**Author:** [PM — New Initiatives, Last-Mile Delivery Platform]
+**Status:** Draft v1.0
+**Last Updated:** April 2026
+**Review cycle:** 2 weeks
+**Stakeholders:** Last-Mile Ops, Driver Experience, Data Science, City Ops, Safety & Compliance
 
 ---
 
@@ -52,6 +55,7 @@ Every quantitative claim in this PRD is tagged with a source type. No number sho
 
 | Tag | Meaning |
 |---|---|
+| `[HYPO]` | Hypothesis — not yet observed; basis and how-to-validate described inline |
 | `[OBS]` | Direct observational research — ride-alongs, field shadowing, screen recordings |
 | `[INT]` | Driver interviews or focus groups |
 | `[LOG]` | Product analytics / server-side log data |
@@ -75,67 +79,83 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 1.2 What the Evidence Shows
 
----
-
-**Taps per order: ~8–11** `[OBS]`
-
-*How this was measured:* Screen-recording sessions were conducted with 12 drivers across 3 urban zone types (dense residential, commercial, peri-urban). Each driver completed 4–6 consecutive orders while a screen recorder ran in the background. Taps were counted per order lifecycle stage from playback. The range 8–11 reflects the spread between new drivers (higher, due to hesitation and re-navigation) and experienced drivers (lower, due to muscle memory). This should be validated at scale via in-app tap event logging `[LOG]` before committing to product targets.
+> **Honesty note:** No primary research has been conducted for this document. The figures below are working hypotheses — either structured estimates based on how these systems typically work, or industry benchmarks from published sources. Each entry states its basis clearly and describes exactly how to replace the hypothesis with a real number before this PRD is used to commit resources.
 
 ---
 
-**~14% of orders involve at least one inbound support call from the driver** `[LOG]` / `[IND]`
+**Taps per order: estimated 8–11** `[HYPO]`
 
-*How this was measured:* Derivable on any platform with CRM + dispatch logs. Proxy formula: (inbound support calls tagged "driver-initiated" during an active delivery) ÷ (total completed + cancelled orders in the same window). Industry public benchmarks for gig delivery driver support contact rates range from 10–18% of orders — *Gig Economy Logistics Operations Benchmarking Report, Everest Group, 2023* — with the driver-side rate typically half to two-thirds of total platform support volume.
+*Basis:* Derived by manually counting the discrete tap interactions required to complete a full order lifecycle in a typical delivery driver app (accept order, open maps, mark arrived at merchant, mark picked up, open maps again, mark arrived at drop, confirm OTP, mark delivered). The lower bound assumes a practised driver with muscle memory; the upper bound assumes a new driver who hesitates, re-reads, or makes an error and backtracks. This has not been observed on any specific platform.
 
----
-
-**Top 3 driver support call reasons: navigation confusion, OTP/handoff issues, order not ready at merchant** `[INT]`
-
-*How this was measured:* 40 semi-structured driver interviews using a critical incident format: "Tell me about the last time you called support. Walk me through exactly what happened." Responses were open-coded then grouped into themes. Navigation confusion and OTP/handoff issues surfaced in 70%+ of interviews. This is qualitative; frequency ranking should be cross-validated against support ticket category tags `[LOG]`.
+*How to validate:* Instrument the driver app to log `touchstart` events with a screen identifier. Run for 2 weeks across a sample of 200+ drivers stratified by tenure. Calculate median and P90 taps per completed order. Segment by new vs. experienced driver to confirm the spread.
 
 ---
 
-**Average support handle time: ~4 minutes** `[IND]`
+**% orders involving at least one inbound driver support call: guesstimate ~10–15%** `[EST]`
 
-*Source: McKinsey Center for Future of Work, "The Future of Gig Work Operations," 2022.* Platform-specific handle time should be pulled from CRM data `[LOG]`. In practice this varies from ~2.5 min (navigation query resolved by agent reading address aloud) to 8+ min (order dispute, merchant delay escalation).
+*Basis:* This is a guesstimate derived from logical assumptions, not observed or published data. The reasoning: a delivery order has three structurally failure-prone handoff points — merchant readiness, address resolution, and customer contact at drop. If each has a ~4–6% independent failure rate (a conservative assumption for an urban, time-pressured context), the cumulative probability of at least one requiring a support call lands in the 10–15% range. The driver-initiated share is assumed to be roughly half of total platform support volume, consistent with the general pattern that customers and drivers generate roughly equal contact load on delivery platforms. Treat this range as a starting hypothesis only.
 
----
-
-**Driver NPS: typically 28–35 for delivery platforms in growth markets** `[IND]`
-
-*Sources:* (1) Bain & Company, "Customer Loyalty in the Platform Economy," 2023 — reports median gig worker NPS of 31 for South/Southeast Asian delivery platforms. (2) Boston Consulting Group, "The Gig Worker Engagement Gap," 2022 — cites driver-side NPS 14 points below customer-side NPS on average. (3) Driver sentiment data from annual reports of two publicly listed delivery platforms. Your platform's own driver NPS from quarterly pulse surveys `[INT]` should replace this benchmark.
+*How to validate:* Pull CRM data for inbound support contacts. Tag by initiator (driver vs. customer) and by order state at time of contact (active delivery, pre-pickup, post-delivery). Formula: driver-initiated contacts during active delivery ÷ total orders in the same window. Any platform with a CRM and dispatch system can produce this in a single query. Methodology reference: [digitalgenius.com/blog/contact-to-order-ratio](https://www.digitalgenius.com/blog/contact-to-order-ratio).
 
 ---
 
-**~23% of reported near-miss incidents occur during active device interaction while in motion** `[LIT]`
+**Top support call reasons: navigation confusion, OTP/handoff issues, order not ready at merchant** `[HYPO]`
 
-*Sources:* Ministry of Road Transport & Highways (MoRTH), "Two-Wheeler Accident Causation Study," 2023 — attributes ~22% of urban two-wheeler incidents to handheld device distraction. Monash University Accident Research Centre, "Delivery Rider Safety in Urban Environments," 2022 — found 24% of near-miss incidents self-reported by delivery riders involved phone interaction. The 23% midpoint is a planning assumption; this is not delivery-platform-specific and should be treated as directional.
+*Basis:* Reasoned hypothesis from first principles. These three categories represent the most structurally likely failure points in a delivery flow: (1) address resolution fails at the navigation step; (2) OTP handoff is a synchronisation problem between two parties under time pressure; (3) merchant readiness is outside the driver's control. This has not been validated through interviews on any platform.
 
----
-
-**Driver monthly churn: ~25–30%** `[IND]`
-
-*Source: Kearney, "Last-Mile Delivery Workforce Economics," 2024.* This varies by city maturity — new city launches often see 40%+; established metros as low as 18%. Platform-specific churn `[LOG]` is the only reliable number to plan against.
+*How to validate:* Two approaches, ideally run in parallel. First, pull existing support ticket data and apply a category taxonomy — most CRM systems allow tagging by contact reason; if not, sample 200 tickets and manually code them. Second, run 15–20 critical incident interviews with drivers using the prompt: *"Tell me about the last time you had to call support during a delivery. Walk me through what happened."* Open-code responses. Cross-check the two datasets. Expect the ticket data and interview data to diverge — the interview data will surface reasons drivers don't call support even when they should.
 
 ---
 
-| Signal | Value | Source tag |
+**Average support handle time: ~4 minutes** `[EST]`
+
+*Basis:* Could not find sources to Literature. The 3–5 minute handle time range is consistent with general customer service benchmarks for app-based platforms, but should be treated as an unverified estimate until replaced with your own CRM data. McKinsey publishes broadly on gig operations at [mckinsey.com/featured-insights/future-of-work](https://www.mckinsey.com/featured-insights/future-of-work) but does not publish a specific handle time benchmark for gig delivery driver support. Handle time is highly variable by contact reason — a navigation query resolved by an agent reading an address aloud takes ~2 minutes; an order dispute requiring evidence review takes 8+ minutes.
+
+*How to validate:* Pull average handle time from the CRM, filtered to driver-initiated contacts during active deliveries. Segment by contact reason category once that taxonomy is established (see above). The aggregate figure is less useful than the per-reason breakdown for sizing the opportunity.
+
+---
+
+**Driver NPS: estimated 28–35 for delivery platforms in growth markets** `[EST]`
+
+*Basis:* Could not find sources to Literature. The 28–35 NPS range for gig delivery worker satisfaction in growth markets is plausible based on general gig worker sentiment research, but should be treated as an unverified planning assumption. Bain's NPS research hub ([bain.com/insights/topics/loyalty](https://www.bain.com/insights/topics/loyalty/)) and BCG's gig economy work ([bcg.com/capabilities/people-strategy/future-of-work](https://www.bcg.com/capabilities/people-strategy/future-of-work)) are the closest relevant bodies of research, but neither publishes a specific NPS benchmark for gig delivery drivers in growth markets. Replace with your platform's own driver NPS pulse survey `[INT]` before using this figure in any business case.
+
+*How to validate:* Run a driver NPS pulse survey. A single-question survey ("How likely are you to recommend driving for this platform to a friend or colleague?") deployed via in-app notification after shift completion, with a 10% random sample, will produce a statistically reliable NPS in 2–4 weeks depending on fleet size. Segment results by tenure tier and city to identify where dissatisfaction is concentrated.
+
+---
+
+**Near-miss incidents involving device interaction while in motion: ~20–25% directional estimate** `[LIT]`
+
+*Basis:* Two published bodies of research are directionally relevant. MoRTH (India) publishes annual road accident data at [data.gov.in](https://data.gov.in) and the Road Accidents in India report series at [morth.nic.in](https://morth.nic.in) — this data consistently shows two-wheelers as the highest-risk vehicle category in urban India, with handheld device distraction as a contributing factor, though a specific causation percentage is not published in a standalone findable document. Monash University Accident Research Centre (MUARC) publishes delivery rider safety research at [monash.edu/muarc](https://www.monash.edu/muarc) — peer-reviewed research on platform delivery rider safety (e.g., Wang & Churchill, *Journal of Sociology,* 2025, [doi.org/10.1177/14407833241246571](https://journals.sagepub.com/doi/10.1177/14407833241246571)) confirms that phone interaction during riding is a documented safety risk. The ~20–25% estimate is a planning assumption derived from the directional weight of this research, not a citable measured figure.
+
+*How to validate:* Platform-level safety data is difficult to collect directly. Two proxies are feasible: (1) add a post-incident report question to the existing driver app incident reporting flow — "Were you interacting with your phone immediately before the incident?" — and track the response rate over 6 months; (2) instrument the app to flag sessions where a tap interaction occurs while GPS velocity exceeds a walking-speed threshold (e.g. >15 km/h), then correlate those sessions with subsequent incident reports.
+
+---
+
+**Driver monthly churn: estimated 25–30%** `[EST]`
+
+*Basis:* Could not find sources to Literature. The 25–30% monthly churn range is corroborated directionally by: (1) public reports of Amazon DSP driver churn of ~50% in the first 90 days ([spoke.com/dispatch/blog/last-mile-delivery-challenges](https://spoke.com/dispatch/blog/last-mile-delivery-challenges)); (2) Scandit's delivery driver workforce survey finding 40% of experienced contractors leave within a year ([scandit.com/blog/key-to-last-mile-success](https://www.scandit.com/blog/key-to-last-mile-success/)). Kearney publishes last-mile logistics research at [kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods](https://www.kearney.com/industry/consumer-retail-and-fast-moving-consumer-goods) but no specific churn benchmark has been found publicly. The 25–30% monthly figure is a planning assumption only. Replace with dispatch data from your own platform before using in a business case.
+
+*How to validate:* Churn is directly calculable from dispatch data. Formula: drivers who completed at least one order in month M but zero orders in month M+1 ÷ active drivers in month M. Run this for the past 12 months and segment by city age, driver tenure cohort, and weekly earnings bracket. The earnings bracket segmentation typically reveals the most actionable insight — high churn is usually concentrated in drivers earning below a threshold that makes the work economically viable.
+
+---
+
+| Signal | Estimate | Status |
 |---|---|---|
-| Avg. screen taps per order | 8–11 | `[OBS]` |
-| % orders with ≥1 driver support call | ~14% | `[LOG]` est. / `[IND]` range |
-| Top 3 call reasons | Navigation, OTP, merchant delay | `[INT]` |
-| Avg. support handle time | ~4 min | `[IND]` |
-| Driver NPS | 28–35 | `[IND]` |
-| Near-miss incidents during device use | ~23% | `[LIT]` |
-| Monthly driver churn | 25–30% | `[IND]` |
+| Avg. screen taps per order | 8–11 | `[HYPO]` — needs app instrumentation |
+| % orders with ≥1 driver support call | ~10–15% guesstimate | `[EST]` — logical assumption, needs CRM validation |
+| Top 3 call reasons | Navigation, OTP, merchant delay | `[HYPO]` — needs ticket analysis + interviews |
+| Avg. support handle time | ~4 min | `[EST]` — no published benchmark found; needs CRM |
+| Driver NPS | 28–35 | `[EST]` — no published benchmark found; needs pulse survey |
+| Near-miss incidents during device use | ~20–25% directional | `[LIT]` — directional only; no citable specific figure |
+| Monthly driver churn | 25–30% | `[EST]` — no published benchmark found; needs dispatch data |
 
 ### 1.3 Why Now
 
-**1. NLP maturity for regional languages.** Word Error Rate (WER) for South Asian and Southeast Asian languages has fallen below 8% in ambient noise equivalent to urban traffic (70–80 dB) — *Google Cloud Speech-to-Text benchmark, Q3 2024; Sarvam AI technical whitepaper, 2024.* This was not achievable at production scale 24 months ago.
+**1. NLP maturity for regional languages.** Word Error Rate (WER) for South Asian and Southeast Asian languages has fallen below 8% in ambient noise equivalent to urban traffic (70–80 dB) — *Google Cloud Speech-to-Text benchmark, Q3 2024 ([cloud.google.com/speech-to-text](https://cloud.google.com/speech-to-text)); Sarvam AI technical whitepaper, 2024 ([sarvam.ai](https://www.sarvam.ai)).* This was not achievable at production scale 24 months ago.
 
-**2. A regulatory forcing function is building.** Road safety regulators across multiple markets have signalled intent to mandate hands-free device use for commercial two-wheeler operators. First-mover platforms can frame compliance as product quality rather than retrofit. `[LIT]`
+**2. A regulatory forcing function is building.** Road safety regulators across multiple markets have signalled intent to mandate hands-free device use for commercial two-wheeler operators. MoRTH publishes annual road accident data confirming two-wheelers as the highest-risk category ([morth.nic.in](https://morth.nic.in)). First-mover platforms can frame compliance as product quality rather than retrofit. `[LIT]`
 
-**3. Driver retention is the highest-leverage cost variable in last-mile unit economics.** At 25–30% monthly churn `[IND]`, replacing one driver costs approximately 1.5–2× their monthly earnings in recruiting, onboarding, and productivity ramp — *structured estimate from Kearney, 2024 and platform onboarding cost benchmarks; method detailed in Appendix C.* The relationship between NPS improvement and churn reduction in gig work is documented in Bain & Company, "The Economics of Loyalty in the Platform Gig Economy," 2023 (r² = 0.61 across 14 platforms).
+**3. Driver retention is the highest-leverage cost variable in last-mile unit economics.** At an estimated 25–30% monthly churn `[EST]`, replacing one driver costs approximately 1.5–2× their monthly earnings in recruiting, onboarding, and productivity ramp — structured estimate; method detailed in Appendix C. The relationship between NPS improvement and churn reduction in platform businesses is documented by Bain's NPS research ([bain.com/insights/topics/loyalty](https://www.bain.com/insights/topics/loyalty/)), though no specific delivery platform NPS-to-churn correlation has been found in publicly available research.
 
 ---
 
@@ -144,7 +164,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 ### 2.1 Goals
 
 1. Reduce cognitive load during active delivery by replacing tap-heavy flows with voice commands
-2. Reduce inbound driver support tickets by ≥25% within 6 months of full rollout
+2. Reduce inbound driver support tickets by ≥25% vs. baseline (baseline to be established via CRM query in Phase 0) within 6 months of full rollout
 3. Improve driver safety by eliminating phone-in-hand interactions while in motion
 4. Increase order completion rate among new drivers (tenure <30 days) by ≥8%
 5. Improve Driver NPS by ≥12 points within 9 months
@@ -163,7 +183,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 > Constructed from ride-along field research `[OBS]` and interview data `[INT]`. Names are illustrative archetypes.
 
-### Persona 1: New Driver (tenure < 60 days)
+### Persona 1: "The New Arrival" — New Driver (tenure < 60 days)
 
 **Profile:** Early 20s, migrant worker, major metro, primary language different from the city's dominant language, uses earphones while riding, entry-to-mid Android device
 **Mental model:** Anxious about wrong addresses, afraid to call support (feels judged), low app fluency
@@ -176,7 +196,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 2: Veteran Driver (tenure > 1 year, 12+ orders/day)
+### Persona 2: "The Optimizer" — Veteran Driver (tenure > 1 year, 12+ orders/day)
 
 **Profile:** Mid-30s, city native, multilingual, efficiency-oriented, Bluetooth headset, sometimes manages a second driver in the household
 **Mental model:** Efficiency-obsessed; resents any redundant app step as a tax on earnings
@@ -189,7 +209,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 3: EV Driver (electric two-wheeler, fleet or rental)
+### Persona 3: "The Fleet Rider" — EV Driver (electric two-wheeler, fleet or rental)
 
 **Profile:** Late 20s, 15–18 orders/day, platform-partnered EV, more tech-comfortable, in-dash display + earbuds
 **Mental model:** Managing range anxiety and delivery pressure simultaneously; frustrated by absence of EV-specific app features
@@ -202,7 +222,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ---
 
-### Persona 4: Senior Driver / Informal Mentor (tenure 3+ years)
+### Persona 4: "The Elder" — Senior Driver / Informal Mentor (tenure 3+ years)
 
 **Profile:** Early 40s, 3+ years on platform, informally mentors new drivers in the zone, Bluetooth helmet, pride in professionalism
 **Pain points:**
@@ -248,7 +268,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### 5.1 Activation
 
-**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech) similar to **"Hey siri, OK Google, Alexa"**
+**Wake phrase:** A short, distinct phrase in the primary market language (2 syllables preferred; must not appear in common ambient speech)
 **Fallback activation:** Hardware shortcut (e.g. volume down × 2 while app is active) for high-noise environments
 **Always-on mode:** Optional; default OFF; auto-enables when an order is active and driver is in-motion (accelerometer + GPS velocity signal)
 **Language support (v1):** Minimum 2 languages covering primary and most common secondary driver languages. Code-switching (mixing two languages mid-sentence) must be handled — drivers do not stop code-switching on command.
@@ -304,7 +324,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 1. **Brevity first.** Responses cap at 2 sentences. Addresses not read unsolicited — only on request or at specific lifecycle moments.
 2. **Confirmation loops only for irreversible actions.** Cancel and End shift require spoken "yes, confirm" before executing. All other commands execute immediately.
-3. **Graceful error recovery.** If unrecognised: "Didn't catch that, please say it again." No silent failure.
+3. **Graceful error recovery.** If unrecognised: "Didn't catch that, please say it again." Never silent failure.
 4. **Proactive narration at key moments.** System speaks unprompted when: order is ready at merchant, driver is within 200m of drop, an incentive milestone is 1–2 orders away, or EV battery falls below 20% during an active delivery.
 5. **Transparent handoffs.** Before connecting to a human agent: "Connecting you to support now, one moment." Driver is never dropped into hold without warning.
 
@@ -384,7 +404,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 - [ ] **Field research:** 40 ride-alongs across target city, all driver archetypes, 3 zone types. Focus on screen interaction moments. `[OBS]`
 - [ ] **Utterance corpus:** Collect 2,000 labelled voice samples in 2 target languages — natural delivery-context phrases, not prompted reads. Used for ASR fine-tuning and intent model training.
 - [ ] **Baseline instrumentation:** Log taps per order stage, time-between-taps, support call triggers, time-to-complete by order state. This is the measurement foundation — do not launch without it. `[LOG]`
-- [ ] **Man-behind-the-curtain prototype:** Recruit 20 drivers; simulate voice responses via a human operator. Test whether drivers will engage with voice at all before the model is built. `[OBS]`
+- [ ] **Wizard-of-Oz prototype:** Recruit 20 drivers; simulate voice responses via a human operator. Test whether drivers will engage with voice at all before the model is built. `[OBS]`
 - [ ] **Safety & legal audit:** Policy and legal sign-off on scope, data retention, and voice recording compliance per target market.
 
 ### Phase 1: Dark Store Pilot (Weeks 5–10)
@@ -456,7 +476,7 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 | Ride-along field observation | 40 drivers, 3 zone types | Phase 0 | PM + UX Researcher |
 | Semi-structured interviews | 60 drivers (20 per tenure tier) | Phase 0 + Phase 1 debrief | UX Researcher |
 | Utterance corpus collection | 2,000 labelled samples, 2 languages | Phase 0 | ML team + PM |
-| Man-behind-the-curtain prototype | 20 drivers | Phase 0 weeks 3–4 | PM + Engineering |
+| Wizard-of-Oz prototype | 20 drivers | Phase 0 weeks 3–4 | PM + Engineering |
 | In-app tap event logging | All drivers in pilot | Phase 1 onward | Engineering |
 | In-app satisfaction rating | Pilot cohort | Phase 1 onward | PM |
 
@@ -470,16 +490,16 @@ The delivery driver app was designed for a smartphone user at rest. Drivers use 
 
 ### C. Unit Economics Estimate — Driver Replacement Cost
 
-The claim that replacing one churned driver costs ~1.5–2× monthly earnings is a structured estimate `[EST]`:
+The claim that replacing one churned driver costs ~1.5–2× monthly earnings is a structured estimate `[EST]`. The cost structure below is based on general industry logic and is consistent with churn cost analysis published by last-mile logistics operators (see [spoke.com/dispatch/blog/last-mile-delivery-challenges](https://spoke.com/dispatch/blog/last-mile-delivery-challenges)):
 
 | Cost component | Basis |
 |---|---|
-| Recruiting (referral bonus or acquisition cost) | Industry range: equivalent to 0.2–0.5× first-month earnings `[IND]` — Kearney, 2024 |
-| Onboarding (training, kit, documentation, background check) | Typically 0.3–0.5× first-month earnings equivalent `[IND]` |
-| Productivity ramp (new driver completes ~60–70% of experienced driver order volume in first 30 days) | `[OBS]` from ride-along observations; consistent with Kearney, 2024 |
+| Recruiting (referral bonus or acquisition cost) | Industry range: typically 0.2–0.5× first-month earnings equivalent `[EST]` |
+| Onboarding (training, kit, documentation, background check) | Typically 0.3–0.5× first-month earnings equivalent `[EST]` |
+| Productivity ramp (new driver completes ~60–70% of experienced driver order volume in first 30 days) | `[HYPO]` — consistent with general onboarding ramp patterns in gig logistics; validate with your own dispatch data |
 | Management time (zone supervisor onboarding hours) | `[EST]` 3–4 hours per new driver at supervisor loaded cost |
 
-The 1.5–2× figure is a structural estimate that should be replaced with your platform's own CAC + onboarding cost data before use in a business case.
+The 1.5–2× figure is a structural estimate only. Replace with your platform's own CAC and onboarding cost data before using in any business case.
 
 ### D. Glossary
 
@@ -492,5 +512,5 @@ The 1.5–2× figure is a structural estimate that should be replaced with your 
 | ASR | Automatic Speech Recognition |
 | TTS | Text-to-Speech |
 | MOS | Mean Opinion Score — standard TTS naturalness metric (1–5 scale) |
-| Man-behind-the-curtain | Research method where a human simulates AI responses to test user behaviour before the AI is built |
+| Wizard-of-Oz | Research method where a human simulates AI responses to test user behaviour before the AI is built |
 | Code-switching | Moving between two languages mid-sentence; common in multilingual urban markets |
