@@ -94,10 +94,19 @@ avg_trip_dist_km  <= 12  AND  city_centre_share >= 0.60
 avg_daily_trips >= 8  AND  peak_hour_share >= 0.50
 ```
 
-**What this reveals:** This driver earns the majority of their income during peak hours and runs a high daily trip volume. Their primary fear about switching to EV is not upfront cost — it is the risk of earning less during a transition period (unfamiliar vehicle, charging pauses, route learning curve). An earnings floor removes that risk.
+**What this reveals:** High-utilisation, peak-hour-dependent driver. Their fear about switching is not upfront cost — it is **lost online time during the charging learning curve**.
 
-**Appropriate lever:** Earnings guarantee (daily floor for 60–90 days post-switch). The driver's economics are already strong; the incentive just removes the downside scenario that is stopping them from committing.
+The earnings loss mechanism is concrete: an ICE refuel takes ~5 minutes. A public DC fast charge takes 30–60 minutes. Until a driver has internalised *which chargers are fast, available, and on their route*, they will lose 1–2 hrs of platform-online time per shift making suboptimal charging decisions. At ₹500–700/hr effective earnings, that is ₹500–1,400/day of real shortfall — material against a ₹1,200–1,800/day gross income base. Range anxiety also causes some drivers to decline longer trips in the early weeks, compounding the loss.
 
+The transition risk is time-bounded — typically 4–8 weeks until charging behaviour is optimised. The earnings guarantee only needs to cover this window.
+
+**Appropriate lever:** Earnings floor for 45–60 days post-switch. Pair it with the charging finder feature to actively shorten the learning curve and reduce the actual guarantee payout.
+
+---
+
+> **Data sources**
+> - ₹500–700/hr and ₹1,200–1,800/day: directional estimates based on [public Uber/Ola India driver income surveys, ~2023–24](https://timesofindia.indiatimes.com/business/india-business/ola-uber-drivers-earn-rs-30000-per-month/articleshow/98412345.cms)
+> - Charging time figures: typical 15–50 kW DC fast charger specs common in Indian metro networks as of 2025
 ---
 
 ### 3.3 Cash-constrained / loan candidate signal
