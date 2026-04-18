@@ -1,6 +1,6 @@
 # Ranking feedback loop collapse
 
-I picked this problem because it is one of the most dangerous failure modes in marketplace ranking — dangerous specifically because every standard metric looks healthy while the damage compounds underneath.
+I picked this problem because it is one of the most silent failure modes in marketplace ranking — dangerous specifically because every standard metric looks healthy while the damage compounds underneath.
 
 This project works through the full problem: understanding why the loop forms, simulating how it compounds over time, and building the case for how to fix it. The accompanying PRD (`ranking_feedback_loop_PRD.md`) is the PM artefact that comes out of that process.
 
@@ -20,11 +20,11 @@ The files are sequenced to build understanding progressively. If you are a PM wi
 
 **`01_feedback_loop_formation.ipynb`** — simulates how the loop forms from scratch. Shows what happens to impression share and supplier visibility across retraining cycles when click data is used as-is. The Gini coefficient rising across cycles is the key output to look at.
 
-The `.png` files are visual outputs from each notebook — charts and summaries of the key conclusions at each stage of the analysis. They are useful if you want a quick read of what each notebook produces without running the code.
-
 ### Then: understand what the fix looks like
 
 **`02_ipw_correction.ipynb`** — simulates the Inverse Propensity Weighting (IPW) correction. IPW reweights each click by how likely the user was to have seen the item at all — so clicks from top slots count for less, and clicks from buried slots count for more. The model then learns relevance, not visibility. The notebook shows the difference in item score distributions before and after correction.
+
+The `.png` files are visual outputs from each notebook — charts and summaries of the key conclusions at each stage of the analysis. They are useful if you want a quick read of what each notebook produces without running the code.
 
 ### Finally: the PM artefact
 
@@ -41,5 +41,3 @@ The simulations use synthetic data and simplified assumptions. They are not a pr
 ## Platform context
 
 This project is scoped to a zero-commission reseller marketplace targeting Tier 2 and Tier 3 cities in India, with micro-entrepreneur suppliers and no advertising product. This platform model was chosen deliberately — organic ranking is the only distribution channel available to suppliers, which makes the feedback loop's damage faster and harder to reverse than on platforms where suppliers can pay for initial visibility.
-
-All platform references are anonymised.
