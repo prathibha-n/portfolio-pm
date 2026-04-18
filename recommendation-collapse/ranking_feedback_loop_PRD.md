@@ -16,9 +16,9 @@ The consequences play out on two timescales. In the short term (weeks): new and 
 
 The damage becomes visible only when new-user growth slows and the per-user deterioration can no longer be hidden. By then, the problem is structural: churned suppliers don't return, and the model has months of bad training cycles to unwind.
 
-> **Source** Position bias and examination probabilities: Joachims et al. (2017) 'Unbiased Learning-to-Rank from Biased Feedback', WSDM. Examination probability estimates (slot 1: ~0.95, slot 5: ~0.30, slot 10: ~0.08) are from this paper's empirical studies on web search. On mobile with a vertical scroll layout, bias is likely worse — treat these numbers as a floor.
+> **Source** Position bias and examination probabilities: Joachims et al. (2017) 'Unbiased Learning-to-Rank from Biased Feedback', WSDM. Examination probability estimates (slot 1: ~0.95, slot 5: ~0.30, slot 10: ~0.08) are from this paper's empirical studies on web search. On mobile with a vertical scroll layout, bias is likely worse.
 
-> **Estimate** The 60-90 day GMV lag estimate comes from: weekly retraining cadence × number of cycles for the score gap to become material (~8-12 cycles, per Joachims et al. compounding formula). Not directly measured. To validate: run the Gini coefficient retroactively on historical impression data and check how much it leads observed GMV inflection points.
+> **Estimate** The 60-90 day GMV lag estimate comes from: weekly retraining cadence × number of cycles for the score gap to become material (~8-12 cycles, per Joachims et al. compounding formula). 
 
 # 2. Context & background
 
@@ -32,9 +32,12 @@ This matters: on platforms with advertising products, new suppliers can pay for 
 
 ## 2.2 Demand characteristics
 
-The buyer base has two properties that make catalog collapse especially risky. First, demand is regionally specific — buyers in different geographies have distinct cultural, occasion-based, and aesthetic preferences that require a broad supplier pool. A catalog concentrated on nationally popular SKUs will consistently fail regional demand. Second, a large share of users are first-time e-commerce buyers with no purchase history, so the quality of organic ranking is the primary driver of discovery quality.
+The buyer base has two properties that make catalog collapse especially risky.   
+First, demand is regionally specific — buyers in different geographies have distinct cultural, occasion-based, and aesthetic preferences that require a broad supplier pool. A catalog concentrated on nationally popular SKUs will consistently fail regional demand.   
+Second, a large share of users are first-time e-commerce buyers with no purchase history, so the quality of organic ranking is the primary driver of discovery quality.
 
-> **Estimate** Regional demand heterogeneity: inferred from the platform's geographic focus (Tier 2/3 India) and product category mix (ethnic fashion, regional home goods). No internal data available. To validate: compute query-to-purchase match rates by buyer pincode cluster and check whether tail queries have systematically lower match rates than head queries.
+> **Estimate** Regional demand heterogeneity: inferred from the platform's geographic focus (Tier 2/3 India) and product category mix (ethnic fashion, regional home goods).
+>
 
 ## 2.3 The feedback loop — plain language
 
@@ -59,7 +62,7 @@ Three actors are affected. Each experiences the problem differently and has diff
 | **Goals** | Find products that match specific intent — regional, occasion-based, or aesthetic. Get value for money. Complete a purchase without friction. |
 | **Pain points** | Search results feel generic. The same top items appear regardless of how specific the query is. Niche or regional searches return irrelevant results. Scroll depth before finding anything relevant increases over time. |
 | **Dissatisfaction signals** | Query pivot (a semantically different second search with no purchase between). Informed abandonment (scroll > 2 screens, zero clicks). Return-to-search within 14 days of a purchase. Rising scroll depth before first click, especially in Tier 2/3 geos. |
-| **What they never do** | Explicitly complain that ranking is bad. Frustration shows up as absence of action, not complaint. |
+| **What they never do** | Explicitly complain that ranking is bad. Frustration shows up as absence of action. |
 
 ## 3.2 Supplier
 
@@ -70,7 +73,7 @@ Three actors are affected. Each experiences the problem differently and has diff
 | **Starvation signals** | Zero orders in first 14 days. No second listing after the first fails. Platform exit within 30-45 days of onboarding. |
 | **What makes this persona structurally different** | Cannot buy their way out of cold-start. The platform's zero-commission promise implicitly commits to fair organic distribution. When the loop breaks that commitment, there is no fallback channel. |
 
-## 3.3 Ranking system (internal)
+## 3.3 Ranking system 
 
 | **Role** | ML model serving ranked results across search, feed, and category pages. Retrained on click and purchase logs on a regular cadence. |
 | --- | --- |
@@ -87,7 +90,7 @@ There are three things going wrong simultaneously. They feed each other, which i
 
 Every time a user clicks, that click gets recorded as a signal that the item is good. But clicks are not just a function of quality — they are also a function of where the item appeared on the page. Items at the top get clicked more simply because users see them first. The model cannot tell the difference. So it learns: items that were shown at the top are good items. Next time, it ranks them even higher. They get clicked even more. The cycle repeats with every retrain.
 
-The business consequence: the model is not surfacing the best products. It is surfacing the most historically visible products. These are not the same thing, and the gap widens over time.
+The consequence: the model is not surfacing the best products. It is surfacing the most historically visible products. These are not the same thing, and the gap widens over time.
 
 > **Source** Joachims et al. (2017) 'Unbiased Learning-to-Rank from Biased Feedback', WSDM. DLA as a production-practical alternative to randomisation-based IPW: Ai et al. (2018) 'Unbiased Learning to Rank with Unbiased Propensity Estimation', SIGIR.
 
@@ -99,8 +102,7 @@ The business consequence: we are churning suppliers before we ever give them a f
 
 A rough estimate: a new supplier in a mid-tier query category can expect around Rs.2,700-3,600 in GMV in their first month at cold-start slot positions. That is below any rational threshold for continuing to invest time in listing products.
 
-> **Estimate** Derived from: 500 sessions/day on a mid-tier query (guesstimate), examination probability ~2% at slot 20+ (Joachims et al.), CVR ~3% (Tier 2/3 m-commerce benchmark), AOV Rs.300-400 (public investor disclosures). Validate against actual new-supplier GMV distributions before using this number in any business case.
-
+> **Estimate** Derived from: 500 sessions/day on a mid-tier query (guesstimate), examination probability ~2% at slot 20+ (Joachims et al.), CVR ~3% (Tier 2/3 m-commerce benchmark), AOV Rs.300-400 (public investor disclosures). 
 ## 4.3 The catalog is shrinking in practice
 
 The two problems above combine into a third: the set of products users actually see is collapsing to a small pool of incumbents. The listed catalog may have thousands of SKUs, but the effective catalog — what gets surfaced — is a small fraction of that.
@@ -113,7 +115,7 @@ The reason this is hard to fix just by fixing the model: even a perfectly debias
 
 The core measurement challenge: the metrics the team watches today — aggregate CTR, model AUC, overall conversion — will all look fine while the loop is running. They are either too aggregated or too lagging to catch it early. We need a different set of metrics, specifically designed to make the loop visible before it becomes structural.
 
-**How to read this section:** leading indicators are what I will watch weekly to detect problems early. Lagging indicators are what I report to leadership to confirm business impact. The trap to avoid: lagging indicators looking healthy while leading indicators are already declining. That gap is exactly how the loop hides.
+**How to read this section:** leading indicators are what needs to be watched weekly to detect problems early. Lagging indicators are what will be reported to confirm business impact. The trap to avoid: lagging indicators looking healthy while leading indicators are already declining. That gap is exactly how the loop hides.
 
 ## 5.1 Leading indicators
 
@@ -127,11 +129,11 @@ These are early warning signals. They should be tracked before any intervention 
 | How often users search again immediately after a search without buying (query pivot rate) | A user who searches, finds nothing useful, and tries a different search is a user the ranking failed. Especially telling on specific or regional queries. | Within ±10% of baseline | > 15% above baseline on mid-tier queries |
 | How often users scroll deeply and leave without clicking (informed abandonment) | Users who scroll past two screens and exit without clicking have looked and decided nothing was relevant. | Within ±10% of baseline | > 20% above baseline |
 
-> **Estimate** Healthy range thresholds are derived from first principles and published benchmarks (Alibaba PAL 2019; Covington et al. 2016 YouTube recommendations), not from platform data. Run 12 weeks of baselines — including at least one major sale period — before treating these numbers as actionable. The ML team will also track a technical metric (the gap between position-corrected and raw model accuracy) as a direct signal of label contamination — flag it if it grows across two consecutive retrains.
+> **Estimate** Healthy range thresholds are derived from first principles and published benchmarks (Alibaba PAL 2019; Covington et al. 2016 YouTube recommendations), not from platform data. Run 12 weeks of baselines — including at least one major sale period — before treating these numbers as actionable. 
 
 ## 5.2 Lagging indicators
 
-These confirm business impact and are what I would report upward. They are slow to move — by the time they show damage, the problem is already advanced. Do not use these as the primary signal for whether the loop is running.
+These confirm business impact and are what would be reported to confirm business impact. They are slow to move — by the time they show damage, the problem is already advanced. Do not use these as the primary signal for whether the loop is running.
 
 | **Metric** | **What it tells us** | **Why it lags** |
 | --- | --- | --- |
@@ -144,18 +146,17 @@ These confirm business impact and are what I would report upward. They are slow 
 
 Three workstreams. The sequence is fixed by dependency: we cannot evaluate whether anything is working without measurement infrastructure in place first. Workstreams 2 and 3 run in parallel once Workstream 1 is done.
 
-A note on framing: Workstreams 2 and 3 both have real costs — CVR impact, engineering time, short-term metric degradation. The conversation with leadership needs to happen before anything ships, not after a metric drops and someone asks why.
+A note on framing: Workstreams 2 and 3 both have real costs — CVR impact, engineering time, short-term metric degradation. 
 
 ## Workstream 1 — Detect (weeks 1-6)
 
 **Goal:** Instrument the leading indicators before touching anything else. Every intervention in Workstreams 2 and 3 needs a before/after baseline to be evaluated.
 
-- The most important first step: confirm whether we are logging which slot each item appeared in at the time it was shown. If we are not, this is the first thing to build. Without it, we cannot measure position bias, and we cannot debias the model later.
+- The most important first step: Logging which slot each item appeared in at the time it was shown. 
 - Build a catalog health dashboard: impression distribution across products (daily), new supplier visibility rate (weekly), position-click correlation (weekly), supplier 90-day survival by cohort (weekly).
-- Run these metrics for 12 weeks before setting alarm thresholds. Four weeks of data will generate false positives from normal seasonal variation.
-- Always cut metrics by query tier (head / torso / tail) and geography (metro / Tier 2 / Tier 3). An aggregate metric that looks fine almost certainly has a collapsing tail hiding underneath it.
+- Run these metrics for 12 weeks before setting alarm thresholds. Only four weeks of data will generate false positives from normal seasonal variation.
+- Always slice metrics by query tier (head / torso / tail) and geography (metro / Tier 2 / Tier 3). An aggregate metric that looks fine almost certainly has a collapsing tail hiding underneath it.
 
-> **Validation required** Three data questions to answer before building — each is a 1-3 day data discovery task: (1) Is slot position already being logged in a way that can be joined to click events? (2) Is supplier join date stored in a way that can be joined to impression data? (3) Do we have the infrastructure to compute semantic similarity between search queries? The answers will significantly change what we need to build and in what order.
 
 ## Workstream 2 — Stabilise (weeks 4-12)
 
@@ -168,9 +169,9 @@ The problem: the model will never voluntarily show new items, because it has no 
 Key decisions and constraints:
 - These trial slots must be excluded from the model's training data. If they aren't, the clicks from forced exposure get fed back in as if they were organic — recreating the same bias problem we're trying to fix.
 - Place trial items in mid-page positions (slots 4-8), not the top two. Top slots carry too much CVR risk for unproven items.
-- This will reduce conversion on those slots by an estimated 5-15%. That cost needs to be explicitly accepted by leadership before launch — not discovered after.
+- This will reduce conversion on those slots by an estimated 5-15%. That cost needs to be explicitly accepted by the business before launch.
 
-> **Validation required** Before setting the threshold for "insufficient data": look at items that eventually became successful sellers and find how many clicks they had before they started converting well. That number sets the threshold. Don't pick it arbitrarily.
+> **Validation required** Before setting the threshold for "insufficient data": look at items that eventually became successful sellers and find how many clicks they had before they started converting well. That number sets the threshold.
 
 ### 2b — Track which suppliers are being starved (supplier health index)
 
@@ -178,7 +179,7 @@ Rather than exploring randomly across all low-exposure items, we want to direct 
 
 Suppliers below a health threshold get automatically included in the exploration pool regardless of their model score. Track the index weekly — two consecutive weeks of decline in new-cohort scores is the trigger for a review.
 
-> **Validation required** Before launching: test the score against historical data on churned suppliers. It should have predicted their churn at least 30 days in advance for at least 70% of cases. If it doesn't, the weights are wrong — adjust before shipping.
+> **Validation required** Before launching: test the score against historical data on churned suppliers. It should have predicted their churn at least 30 days in advance for at least 70% of cases. If it doesn't, the weights are wrong and needs adjustment.
 
 ### 2c — Prevent any one supplier from dominating a results page (diversity constraint)
 
@@ -190,26 +191,24 @@ This is a blunt intervention. It will hurt short-term CTR in cases where one sup
 
 ## Workstream 3 — Fix the root cause (months 2-6)
 
-**Goal:** Retrain the model so it learns actual product relevance, not historical visibility. This is the only intervention that fixes the problem permanently. It requires 3-6 months and meaningful ML engineering investment.
+**Goal:** Retrain the model so it learns actual product relevance, not historical visibility. This is the only intervention that fixes the problem permanently. It will require 3-6 months for the effects to be visible.
 
-### 3a — Start logging position data now
+### 3a — Logging position data 
 
-Before any debiasing work can begin, we need to know — for every item shown — exactly which slot it appeared in. This needs to be stored and linkable to the click that followed. One technical risk to flag to engineering early: if the system re-ranks items after logging, or logs in a way that doesn't match the order users actually saw, the position data will be wrong and the debiasing will fail. Auditing this is a prerequisite, not an afterthought.
+Before any debiasing work can begin, we need to know — for every item shown — exactly which slot it appeared in. This needs to be stored and linkable to the click that followed.
 
 ### 3b — Decide how we will measure position bias (key decision required)
 
 To correct for position bias in the training data, we need to know how much each slot position inflates click probability. There are two ways to get this:
 
 - **Run a controlled experiment:** Randomly shuffle results for 1-2% of traffic for several weeks. This gives us clean data on how much position affects clicks. It is the more reliable approach — but it means deliberately showing worse results to a small percentage of users. Leadership needs to explicitly approve this.
-- **Estimate it from existing data (DLA):** Use an algorithm that infers position bias from existing click patterns, without needing to run an experiment. More practical, but technically more fragile — if set up incorrectly, it produces no debiasing effect at all.
-
-> **Validation required** This is a leadership decision, not a technical one. If we can run the experiment, do it — the data will be cleaner. If it's not approvable, we go with the algorithmic approach and accept more technical risk. Either way, the decision needs to be documented — it will be asked about in any engineering review.
+- **Estimate it from existing data (DLA):** Use a Dual Learning Algorithm (DLA) that infers position bias from existing click patterns, without needing to run an experiment. More practical, but technically more fragile — if set up incorrectly, it produces no debiasing effect at all.
 
 ### 3c — Retrain the model with corrected data
 
-Once we have position bias estimates, the ML team reweights the training data so that clicks from high-slot items count for less, and clicks from low-slot items count for more. The model then learns from what users actually wanted — not from what happened to be shown at the top.
+Once we have position bias estimates, the ML team reweights the training data so that clicks from high-slot items count for less, and clicks from low-slot items count for more. The model then learns from what users actually wanted and not from what happened to be shown at the top.
 
-How to know if it's working: the gap between the model's accuracy on raw click data vs position-corrected click data should shrink after each retrain. A widening gap means the debiasing is not taking effect — investigate the position estimates.
+How to know if it's working: the gap between the model's accuracy on raw click data vs position-corrected click data should shrink after each retrain.
 
 One important note: this fix does not help items that have near-zero clicks to begin with. The exploration budget from Workstream 2 remains necessary even after this is live. Both are needed and they solve different parts of the problem.
 
@@ -223,18 +222,5 @@ One important note: this fix does not help items that have near-zero clicks to b
 | Logging join non-determinism | If the serving stack re-ranks after logging, or logs asynchronously, stored slot will not match what the user saw. IPW estimates will be wrong. | Audit the serving pipeline before building logging infrastructure. Map every transformation between model score and final render position. |
 | Metrics baseline too short | Thresholds set on 4 weeks of data will generate false positives from seasonal variation. | Run baselines for minimum 12 weeks, including at least one major sale period. Alarms should be relative to seasonally-adjusted moving averages, not absolute values. |
 | Supplier health index misweighted | Over-weighting impression share will enroll low-quality suppliers in the exploration budget, generating noisy signal and hurting UX. | Validate weights against historical churn data before launch. The index should predict churn 30+ days in advance for at least 70% of churned suppliers in a held-out validation set. |
-
-# 8. Open questions
-
-These gaps cannot be resolved without internal data. Treat this list as a day-1 data discovery agenda.
-
-| **What is the current retraining cadence?** | The severity of the loop compounds with retraining frequency. Weekly retrains run 52 contamination cycles per year. Monthly runs 12. Intervention urgency and time-to-fix both depend on this. |
-| --- | --- |
-| **Is serve-time slot currently logged and joinable to click events?** | If yes: IPW and the slot-CTR metric are immediately buildable. If no: the logging infrastructure build is the critical path for everything else. |
-| **What fraction of new suppliers get zero orders in their first 30 days?** | The cold-start starvation estimate (Rs.2,700-3,600 monthly GMV) is from benchmarks, not internal data. Actual new-supplier first-month GMV distribution would confirm or change the severity framing. |
-| **What is the current Impression Gini on historical data?** | Running the Gini retroactively on 12 months of impression logs is a single SQL job that would immediately show whether catalog concentration is already advanced or still early-stage. |
-| **What is the current new-supplier 30-day churn rate?** | If already above 60-70%, starvation is structural and the exploration budget alone is not enough. A supplier acquisition and onboarding review would be needed alongside the ranking interventions. |
-| **Does embedding infrastructure exist?** | The pivot rate metric requires computing cosine similarity between query embeddings. If this infrastructure does not exist, the metric needs to be scoped separately or replaced with a simpler proxy (e.g. exact query repeat rate). |
-| **Is model updating a full retrain or incremental?** | Incremental (online) learning compounds the loop faster than periodic full retrains because there is no reset of contaminated weights. If the model is updated incrementally, the urgency of the debiasing fix increases significantly. |
 
 *Portfolio artefact produced for personal learning. All platform references are anonymised. Assumptions and data gaps are flagged explicitly throughout. Sources are cited where available; estimates show derivation reasoning.*
