@@ -35,7 +35,7 @@ The notebook produces a ranked action list from the simulated data — the worst
 
 ### But reducing slots during quiet hours risks getting caught out when demand spikes.
 
-Exactly — and this is the tension I almost missed in the design. A manager following the reallocation list without knowing what demand is coming tomorrow could reduce overnight slots on a night that precedes a Diwali rush or a pay-cycle spike. That's how you create the very SLA problem you were trying to solve.
+A manager following the reallocation list without knowing what demand is coming tomorrow could reduce overnight slots on a night that precedes a Diwali rush or a pay-cycle spike. That's how you create the very SLA problem you were trying to solve.
 
 **That's the real reason the forecast exists in this project** — not as a standalone ML exercise, but as the guardrail that makes the waste recommendations safe to act on. The waste analysis and the forecast have to live on the same screen. The simulation makes this constraint visible even without real data.
 
