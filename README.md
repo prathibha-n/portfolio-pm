@@ -4,6 +4,8 @@ I'm a product manager who thinks in systems first.
 
 The way I work: understand the system, find where users actually get stuck (not where the PRD assumed they would), then figure out what number moves if I'm right. In that order. Almost always in that order.
 
+[LinkedIn](https://linkedin.com/in/nprathibha30) 
+
 ---
 
 ## What's here
@@ -25,9 +27,6 @@ Each folder has its own README. Start wherever is relevant to you.
 
 
 ---
-
-[LinkedIn](https://linkedin.com/in/nprathibha) 
-
 
 ## Case Studies
 
