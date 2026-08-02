@@ -1,4 +1,7 @@
 # Dark Store Slot-Utilisation Dashboard
+Dark store roster is fixed-shift, but order volume swings hard by hour — most slots run under 40% utilisation, ~₹4.9L/month in simulated waste. Solution: a ranked slot-reduction list paired with a demand forecast, so cuts are guardrailed against missing a real spike.
+
+
 **PIN 560068 — Bellandur, Bengaluru**
 
 > **Note:** This project runs on a simulated dataset. I didn't have access to real order data from the Bellandur store. The demand patterns, utilisation numbers, and cost figures are modelled from publicly known quick-commerce behaviour in Bengaluru — illustrative of what the analysis *would* surface, not a report on what *has* been found.
