@@ -1,4 +1,6 @@
-## Conclusion
+### Citibike Dataset - Identification of Casual Riders through ride data only
+
+Predict whether a Citi Bike trip belongs to a Member or Casual rider, using ride behavior alone - with the business goal of identifying casual riders whose behavior already resembles a member's, as targets for conversion.
 
 ### Problem
 Predict whether a Citi Bike trip belongs to a Member or Casual rider, using ride behavior alone (no demographic data available) — with the business goal of identifying casual riders whose behavior already resembles a member's, as targets for conversion.
