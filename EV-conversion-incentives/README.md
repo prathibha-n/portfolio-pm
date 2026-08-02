@@ -1,7 +1,7 @@
 # EV Transition — Driver Cohort Analysis & Incentive Design
-> Ridehailing EV transition strategy for Indian mobility platforms · Bengaluru-first
 
 A product strategy toolkit for converting active petrol/diesel/CNG drivers to EVs on ridehailing platforms (Uber India, Rapido, Ola, Porter). Combines a SQL-based driver targeting model with a full product spec for the incentive system.
+> Ridehailing EV transition strategy for Indian mobility platforms · Bengaluru-first
 
 ---
 
