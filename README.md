@@ -27,3 +27,18 @@ Each folder has its own README. Start wherever is relevant to you.
 ---
 
 [LinkedIn](https://linkedin.com/in/nprathibha) 
+
+
+## Case Studies
+
+<!-- INDEX:START -->
+| Project | Summary |
+|---|---|
+| [Citibike casual rider conversion](Citibike casual rider conversion/) |  |
+| [EV Transition — Driver Cohort Analysis & Incentive Design](EV-conversion-incentives/) | > Ridehailing EV transition strategy for Indian mobility platforms · Bengaluru-first |
+| [Beauty Ecommerce — Retention Cohort Teardown](beauty-retention-analysis/) | A PM-led analysis of customer retention in a beauty ecommerce vertical — looking at where users drop off, which segments are worth investing in, and what a re-engagement strategy grounded in data actually looks like. |
+| [Dark Store Slot-Utilisation Dashboard](darkstore-optimisation/) | **PIN 560068 — Bellandur, Bengaluru** |
+| [Voice AI for Last-Mile Delivery Drivers — Product Work Sample](prd-voice-ai-captain/) | This folder contains a product management work sample: a full PRD and supporting artefacts for a voice AI assistant designed to reduce cognitive load and safety risk for delivery drivers on two-wheelers. |
+| [Ranking feedback loop collapse](recommendation-collapse/) | I picked this problem because it is one of the most silent failure modes in marketplace ranking — dangerous specifically because every standard metric looks healthy while the damage compounds underneath. |
+| [returns-risk-intervention](returns-risk-intervention/) |  |
+<!-- INDEX:END -->
