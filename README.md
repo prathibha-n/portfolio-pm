@@ -33,7 +33,7 @@ Each folder has its own README. Start wherever is relevant to you.
 <!-- INDEX:START -->
 | Project | Summary |
 |---|---|
-| [Citibike casual rider conversion](Citibike casual rider conversion/) |  |
+| [Citibike-casual-rider-conversion](Citibike-casual-rider-conversion/) |  |
 | [EV Transition — Driver Cohort Analysis & Incentive Design](EV-conversion-incentives/) | A product strategy toolkit for converting active petrol/diesel/CNG drivers to EVs on ridehailing platforms (Uber India, Rapido, Ola, Porter). Combines a SQL-based driver targeting model with a full product spec for the incentive system. |
 | [Beauty Ecommerce — Retention Cohort Teardown](beauty-retention-analysis/) | A PM-led analysis of customer retention in a beauty ecommerce vertical — looking at where users drop off, which segments are worth investing in, and what a re-engagement strategy grounded in data actually looks like. |
 | [Dark Store Slot-Utilisation Dashboard](darkstore-optimisation/) | **PIN 560068 — Bellandur, Bengaluru** |
